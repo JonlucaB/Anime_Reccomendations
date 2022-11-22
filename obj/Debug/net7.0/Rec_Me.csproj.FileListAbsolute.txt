@@ -1,0 +1,6 @@
+/Users/jonluca/Projects/Rec_Me/Rec_Me/obj/Debug/net7.0/Rec_Me.csproj.AssemblyReference.cache
+/Users/jonluca/Projects/Rec_Me/Rec_Me/obj/Debug/net7.0/Rec_Me.GeneratedMSBuildEditorConfig.editorconfig
+/Users/jonluca/Projects/Rec_Me/Rec_Me/obj/Debug/net7.0/Rec_Me.AssemblyInfoInputs.cache
+/Users/jonluca/Projects/Rec_Me/Rec_Me/obj/Debug/net7.0/Rec_Me.AssemblyInfo.cs
+/Users/jonluca/Projects/Rec_Me/Rec_Me/obj/Debug/net7.0/Rec_Me.csproj.CoreCompileInputs.cache
+/Users/jonluca/Projects/Rec_Me/Rec_Me/obj/Debug/net7.0/Rec_Me.MvcApplicationPartsAssemblyInfo.cache

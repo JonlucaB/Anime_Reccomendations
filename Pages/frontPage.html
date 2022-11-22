@@ -1,0 +1,80 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Anime Reccomendations</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+    <body>
+        <h1>Please enter your favorite Anime titles below in the text box :)</h1>
+        <form>
+            <label for="animeTitle">Anime Title:</label><br>
+            <input type="text" id="animeTitleText" name="animeTitle" /><br >
+            <input type="submit" value="Submit" />
+        </form>
+        <script>
+            function init() {
+                let title_Input = document.getElementById("animeTitleText");
+                title_Input.onsubmit = add_Anime(title_Input.value);
+            };
+
+            function add_Anime(anime_Title) {
+                var query = `
+                    query {
+                      Media (id: 100, type: ANIME) {
+                        recommendations(sort: RATING_DESC, page: 1, perPage: 5) {
+                            edges {
+                              node {
+                                id
+                              }
+                            }
+                          }
+                      }
+                    }
+                 `;
+                var url = "https://graphql.anilist.co",
+                    options = {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Accept': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            query: query,
+                            variables: {
+                                title: anime_Title
+                            }
+                        })
+                    };
+                function handleResponse(response) {
+                    return response.json().then(function (json) {
+                        return response.ok ? json : Promise.reject(json);
+                    });
+                }
+
+                function handleData(data) {
+                    display_Anime(data);
+                    //console.error("Successfuly Queried AniList!");
+                }
+
+                function handleError(error) {
+                    alert('It seems you have entered the title incorrectly, please double check your spelling!');
+                    console.error(error);
+                }
+
+                fetch(url, options).then(handleResponse).then(handleData).catch(handleError);
+            };
+
+            function display_Anime(data) {
+                //for every anime in user_Animes, create a little card with title, image, and link to the anime
+                //export these cards as html to a doc element on the other html page
+                console.log(data);
+            }
+
+            window.onload = init;
+        </script>
+        <noscript>You must enable Javascript to use this website</noscript>
+    </body>
+</html>
