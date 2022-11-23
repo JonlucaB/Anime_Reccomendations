@@ -1,19 +1,30 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
+    <link rel="stylesheet" href="style.css" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Anime Reccomendations</title>
-    <link rel="stylesheet" href="style.css">
+
 </head>
 <body>
-    <h1>Please enter your favorite Anime titles below in the text box :)</h1>
+    <h1>Please enter your favorite Anime titles below in the text box</h1>
     <form onsubmit="find_Anime();">
         <label for="animeTitle">Anime Title:</label><br>
         <input type="text" id="animeTitleText" name="animeTitleText" placeholder="Type here"/><br>
         <input type="submit" value="Submit" />
     </form>
+    <footer>
+        <h2>
+            This web application uses GraphQL to query the AniList API
+        </h2>
+        <p>
+            This application was made my Jonluca Biagini
+            <a href="https://www.linkedin.com/in/jonlucab/" target="_blank">LinkedIn</a>
+            <a href="https://github.com/JonlucaB/Anime_Reccomendations" target="_blank">Github</a>
+        </p>
+    </footer>
 
     <div class="grid">
         
@@ -21,7 +32,7 @@
 
     <script>
         function find_Anime() {
-            var query = `query($title: String) {
+            let query = `query($title: String) {
                 Media(search: $title, type: ANIME, sort: SCORE_DESC) {
                     title {
                         english
@@ -41,7 +52,7 @@
                 }
             }`;
 
-            var variables = {
+            let variables = {
                 title: "Cowboy Bebop"//document.getElementById("animeTitleText").value
             };
 
@@ -54,7 +65,7 @@
                     },
                     body: JSON.stringify({
                         query: query,
-                        variables: variables
+                        //variables: variables
                     })
                 };
 
@@ -77,7 +88,7 @@
             // I have tried so many different things, multiple times
             // I do not understand why it fails to fetch when my code is LITERALLY copy and pasted from the API website
             // Sometimes I really hate technology
-
+            console.error("about to fetch");
             fetch(url, options).then(handleResponse).then(handleData).catch(handleError);
         };
 
