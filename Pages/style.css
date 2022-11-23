@@ -68,7 +68,7 @@ footer {
     color: grey;
     position: fixed;
     bottom: 5px;
-
+    line-height: 50%;
 }
 
 h2 {
@@ -77,11 +77,11 @@ h2 {
 }
 
 p {
-    font-size: 10px;
+    font-size: 12px;
     font-weight: 20;
 }
 
 a {
-    font-size: 10px;
+    font-size: 12px;
     font-weight: 20;
 }
