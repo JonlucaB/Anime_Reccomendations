@@ -35,8 +35,8 @@
 
     <script>
         function find_Anime() {
-            let query = `query($title: String) {
-                Media(search: $title, type: ANIME, sort: SCORE_DESC) {
+            let query = `query() {
+                Media(type: ANIME, sort: SCORE_DESC) {
                     title {
                         english
                     }
@@ -68,7 +68,7 @@
                     },
                     body: JSON.stringify({
                         query: query,
-                        //variables: variables
+                        variables: variables
                     })
                 };
 
@@ -84,16 +84,17 @@
             }
 
             function handleError(error) {
-                alert('It seems you have entered the title incorrectly, please double check your spelling!');
+                alert('Somrthing went wront, please double check your spelling!');
                 console.error(error);
             }
             // I want to throw my computer across the room. For the past two hours I have been trying to get it to fetch
             // I have tried so many different things, multiple times
             // I do not understand why it fails to fetch when my code is LITERALLY copy and pasted from the API website
             // Sometimes I really hate technology
-            console.error("about to fetch");
+            //console.error("about to fetch");
             fetch(url, options).then(handleResponse).then(handleData).catch(handleError);
         };
+    
 
         function display_Anime(data) {
             //for every anime in user_Animes, create a little card with title, image, and link to the anime
